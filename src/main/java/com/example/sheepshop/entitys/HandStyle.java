@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -14,8 +16,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "category")
-public class Category {
+@Table(name = "hand_style")
+public class HandStyle{
     @Id
     @Column(name = "id", nullable = false)
     private UUID id;
@@ -30,5 +32,8 @@ public class Category {
 
     @Column(name = "status")
     private Integer status;
+
+    @OneToMany(mappedBy = "handStyle")
+    private Set<ProductDetail> productDetails;
 
 }

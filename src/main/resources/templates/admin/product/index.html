@@ -1,4 +1,4 @@
-<div th:fragment="product" class="container">
+<div th:fragment="productindex" class="container">
     <div class="card card-primary">
         <div class="card-header">
             <h3 class="card-title">Quản lý sản phẩm</h3>
@@ -6,28 +6,25 @@
         <div class="card-body">
             <button type="button" class="btn btn-primary" onclick="toggleForm('add')">Add</button>
         </div>
-        <form id="productForm" style="display: none;">
+        <form method="POST">
+                  style="display: none;">
             <div class="card-body">
                 <div class="row">
+                    <div class="form-group col-lg-6 col-md-6">
+                        <label for="exampleInputPassword12">Price</label>
+                        <input type="text" class="form-control" id="exampleInputPassword12" placeholder="price">
+                    </div>
                     <div class="form-group col-md-6">
-                        <label for="exampleInputEmail1">Quantity</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="quantity">
+                        <label for="exampleInputEmail13">Quantity</label>
+                        <input type="text" class="form-control" id="exampleInputEmail13" placeholder="quantity">
                     </div>
                     <div class="form-group col-lg-6 col-md-6">
-                        <label for="exampleInputPassword1">Price</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="price">
+                        <label for="exampleInputPassword13">Price</label>
+                        <input type="text" class="form-control" id="exampleInputPassword13" placeholder="price">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="exampleInputEmail1">Quantity</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="quantity">
-                    </div>
-                    <div class="form-group col-lg-6 col-md-6">
-                        <label for="exampleInputPassword1">Price</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="price">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="exampleInputEmail1">Quantity</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="quantity">
+                        <label for="exampleInputEmail14">Quantity</label>
+                        <input type="text" class="form-control" id="exampleInputEmail14" placeholder="quantity">
                     </div>
                     <div class="form-group col-lg-6 col-md-6">
                         <label for="exampleInputPassword1">Price</label>
@@ -41,6 +38,28 @@
             </div>
         </form>
     </div>
+    <!-- Place this code where you want to render the pagination links -->
+<!--    <div class="card-header">-->
+<!--        <div class="card-tools">-->
+<!--            <ul class="pagination pagination-sm float-right">-->
+<!--                <li class="page-item">-->
+<!--                    <a class="page-link" th:href="@{/admin/product-details/hien-thi(page=1)}" aria-label="Previous">-->
+<!--                        <span aria-hidden="true">&laquo;</span>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="page-item" th:each="pageNumber : ${#numbers.sequence(1, totalPages)}">-->
+<!--                    <a class="page-link" th:href="@{/admin/product-details/hien-thi(page=${pageNumber})}"-->
+<!--                       th:classappend="${pageNumber == currentPage} ? 'active' : ''"-->
+<!--                       th:text="${pageNumber}"></a>-->
+<!--                </li>-->
+<!--                <li class="page-item">-->
+<!--                    <a class="page-link" th:href="@{/admin/product-details/hien-thi(page=${totalPages})}" aria-label="Next">-->
+<!--                        <span aria-hidden="true">&raquo;</span>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -48,19 +67,33 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th class="col-1 text-center">STT</th>
-                            <th class="col-6">Task</th>
-                            <th class="col-3">Progress</th>
-                            <th class="col-2">Label</th>
-                            <th class="col-2">Actions</th>
+                            <th class="col-1">Mã</th>
+                            <th class="col-6">Tên</th>
+                            <th class="col-3">Giá bán</th>
+                            <th class="col-2">Số lượng</th>
+                            <th class="col-2">Thương hiệu</th>
+                            <th class="col-2">Kiểu tay</th>
+                            <th class="col-2">Kiểu cổ</th>
+                            <th class="col-2">Màu sắc</th>
+                            <th class="col-2">Size</th>
+                            <th class="col-2">Chất liệu</th>
+                            <th class="col-2">Mô tả</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td>Update software</td>
-                            <td>123214151</td>
-                            <td>300.000</td>
+                        <!-- Loop through the productDetails list and populate table rows -->
+                        <tr th:each="productDetail, index : ${productDetails}">
+                            <td th:text="${productDetail.product.code}"></td>
+                            <td th:text="${productDetail.product.name}"></td>
+                            <td th:text="${productDetail.price}"></td>
+                            <td th:text="${productDetail.quantity}"></td>
+                            <td th:text="${productDetail.brand.name}"></td>
+                            <td th:text="${productDetail.collarStyle.name}"></td>
+                            <td th:text="${productDetail.handStyle.name}"></td>
+                            <td th:text="${productDetail.color.name}"></td>
+                            <td th:text="${productDetail.size.name}"></td>
+                            <td th:text="${productDetail.material.name}"></td>
+                            <td th:text="${productDetail.description}"></td>
                             <td>
                                 <a href="#" class="btn bg-secondary" onclick="toggleForm('edit')">Edit</a>
                                 <a href="#" class="btn bg-danger">Delete</a>

@@ -1,8 +1,7 @@
 package com.example.sheepshop.entitys;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Nationalized;
 
 import java.math.BigDecimal;
@@ -10,6 +9,10 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 @Entity
 @Table(name = "product_detail")
 public class ProductDetail {
@@ -22,8 +25,16 @@ public class ProductDetail {
     private Brand brand;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "collar_style_id")
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private Product product;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "collar_style_id" , referencedColumnName = "id")
     private CollarStyle collarStyle;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hand_style_id")
+    private HandStyle handStyle;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "color_id")
@@ -50,5 +61,6 @@ public class ProductDetail {
 
     @Column(name = "status")
     private Integer status;
+
 
 }

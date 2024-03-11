@@ -1,7 +1,9 @@
 package com.example.sheepshop.entitys;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
@@ -11,8 +13,10 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "\"size\"")
+@Table(name = "size")
 public class Size {
     @Id
     @Column(name = "id", nullable = false)
@@ -30,6 +34,6 @@ public class Size {
     private Integer status;
 
     @OneToMany(mappedBy = "size")
-    private Set<ProductDetail> productDetails = new LinkedHashSet<>();
+    private Set<ProductDetail> productDetails;
 
 }
