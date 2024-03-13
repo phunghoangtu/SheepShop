@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security6">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="https://www.thymeleaf.org/extras/spring-security6">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -205,7 +205,7 @@
             <ul class="sidebar-menu" data-widget="tree">
 
                 <li>
-                    <a href="menu.html">
+                    <a href="/admin/product-details/hien-thi">
                         <i class="fa fa-th"></i> <span>Quản lý danh mục </span>
                         <span class="pull-right-container">
                                 <small class="label pull-right bg-green">FE</small>
@@ -214,15 +214,15 @@
                 </li>
 
                 <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>Quản lý banner</span>
+                    <a href="">
+                        <i class="fa fa-dashboard"></i> <span>Quản lý sản pẩm</span>
                         <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href=""><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                        <li><a href=""><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                        <li><a href=""><i class="fa fa-circle-o"></i> Chi tiết sản phẩm</a></li> <hr>
+                        <li><a href=""><i class="fa fa-circle-o"></i> Sản phẩm</a></li>
                     </ul>
                 </li>
 
@@ -244,18 +244,11 @@
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content content-header">
-            <div th:replace="admin/product/index :: productindex"></div>
+            <div layout:fragment="content"></div>
         </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
-<!--    <footer class="main-footer">-->
-<!--        <div class="pull-right hidden-xs">-->
-<!--            <b>Version</b> 0.0.1-->
-<!--        </div>-->
-<!--        <strong>Copyright &copy; 2018 <a href="https://adminlte.io">TTPM_BKAP</a>.</strong>-->
-<!--    </footer>-->
 </div>
 <!-- ./wrapper -->
 

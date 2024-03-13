@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -52,9 +50,6 @@ public class User {
 
     @Column(name = "status")
     private Integer status;
-
-//    @OneToMany(mappedBy = "user")
-//    private Set<Bill> bills ;
 
     @OneToMany(mappedBy = "user" , fetch = FetchType.EAGER)
     private Set<UserRole> userRoles;

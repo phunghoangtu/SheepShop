@@ -1,7 +1,8 @@
 package com.example.sheepshop.controllers.admin;
 
+
 import com.example.sheepshop.entitys.ProductDetail;
-import com.example.sheepshop.services.impl.ProductDetailService;
+import com.example.sheepshop.repositorys.ProductDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,17 +18,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductDetailController {
 
     @Autowired
-    private ProductDetailService productDetailService;
+    private ProductDetailRepository productDetailRepository;
 
     @GetMapping("hien-thi")
     public String hienthi(Model model, @RequestParam(defaultValue = "1") int page) {
         int pageSize = 5;
         Pageable pageable = PageRequest.of(page - 1, pageSize);
-        Page<ProductDetail> productDetails = productDetailService.getAll(pageable);
+        Page<ProductDetail> productDetails = productDetailRepository.findAll(pageable);
 
         model.addAttribute("productDetails", productDetails);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", productDetails.getTotalPages());
-        return "admin/index";
+        return "admin/product/index";
     }
 }
