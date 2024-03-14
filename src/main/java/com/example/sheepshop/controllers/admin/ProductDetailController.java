@@ -67,12 +67,9 @@ public class ProductDetailController {
         List<Size> sizes = sizeService.getAll();
         model.addAttribute("sizes", sizes);
 
-        Product product = new Product();
-        product.setName("Chưa chọn");
-        products.add(0,product);
 
 
-        return "add-productdetail";
+        return "admin/product_detail/add-productdetail";
     }
 
     @PostMapping("add")
@@ -132,7 +129,7 @@ public class ProductDetailController {
 
 
 
-        return "update-productdetail";
+        return "admin/product_detail/update-productdetail";
     }
 
     @PostMapping("update")
