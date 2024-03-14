@@ -8,28 +8,28 @@
                 <div class="card-header">
                     <h3 class="card-title"></h3>
                 </div>
-                <form>
+                <form th:action="@{/admin/product-details/add}" method="post" modelAttribute="productDetail" th:object="${productDetail}">
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="exampleInputPrice">Giá bán</label>
-                                <input type="text" class="form-control" id="exampleInputPrice" placeholder="Nhập giá bán">
+                                <input type="text" class="form-control" th:field="*{price}" id="exampleInputPrice" placeholder="Nhập giá bán">
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="exampleInputQuantity">Số lượng</label>
-                                <input type="number" class="form-control" id="exampleInputQuantity" placeholder="Nhập số lượng">
+                                <input type="number" class="form-control" th:field="*{quantity}" id="exampleInputQuantity" placeholder="Nhập số lượng">
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="exampleInputProduct">Sản phẩm</label>
-                                <select class="form-control" id="exampleInputProduct" th:field="*{products}">
+                                <select class="form-control" id="exampleInputProduct" th:field="*{product}">
                                     <option th:each="item : ${products}" th:value="${item.id}" th:text="${item.name}"></option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="brand">Thương hiệu</label>
-                                <select id="brand" name="brand" class="form-control" th:field="*{brands}">
+                                <select id="brand" name="brand" class="form-control" th:field="*{brand}">
                                     <option th:each="item : ${brands}" th:value="${item.id}" th:text="${item.name}"></option>
                                 </select>
                             </div>
@@ -37,13 +37,13 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="handStyle">Kiểu tay</label>
-                                <select id="handStyle" name="handStyle" class="form-control" th:field="*{handStyles}">
+                                <select id="handStyle" name="handStyle" class="form-control" th:field="*{handStyle}">
                                     <option th:each="item : ${handStyles}" th:value="${item.id}" th:text="${item.name}"></option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="collarType">Kiểu cổ</label>
-                                <select id="collarType" name="collarType" class="form-control" th:field="*{collarTypes}">
+                                <select id="collarType" name="collarType" class="form-control" th:field="*{collarStyle}">
                                     <option th:each="item : ${collarTypes}" th:value="${item.id}" th:text="${item.name}"></option>
                                 </select>
                             </div>
@@ -51,13 +51,13 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="color">Màu sắc</label>
-                                <select id="color" name="color" class="form-control" th:field="*{colors}">
+                                <select id="color" name="color" class="form-control" th:field="*{color}">
                                     <option th:each="item : ${colors}" th:value="${item.id}" th:text="${item.name}"></option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="size">Size</label>
-                                <select id="size" name="size" class="form-control" th:field="*{sizes}">
+                                <select id="size" name="size" class="form-control" th:field="*{size}">
                                     <option th:each="item : ${sizes}" th:value="${item.id}" th:text="${item.name}"></option>
                                 </select>
                             </div>
@@ -65,13 +65,13 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="material">Chất liệu</label>
-                                <select id="material" name="material" class="form-control" th:field="*{materials}">
+                                <select id="material" name="material" class="form-control" th:field="*{material}">
                                     <option th:each="item : ${materials}" th:value="${item.id}" th:text="${item.name}"></option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="description">Mô tả</label>
-                                <input type="text" class="form-control" id="description" name="description" placeholder="Nhập mô tả">
+                                <input type="text" class="form-control" th:field="*{description}" id="description" placeholder="Nhập mô tả">
                             </div>
                         </div>
                     </div>

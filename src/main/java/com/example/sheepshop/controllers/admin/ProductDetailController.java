@@ -3,16 +3,14 @@ package com.example.sheepshop.controllers.admin;
 
 import com.example.sheepshop.entitys.*;
 import com.example.sheepshop.repositorys.*;
+import com.example.sheepshop.services.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,73 +19,64 @@ import java.util.List;
 public class ProductDetailController {
 
     @Autowired
-    private ProductDetailRepository productDetailRepository;
+    private ProductDetailService productDetailService;
     @Autowired
-    private BrandRepository brandRepository;
+    private BrandService brandService;
     @Autowired
-    private CollarStyleRepository collarStyleRepository;
+    private CollarStyleService collarStyleService;
     @Autowired
-    private ColorRepository colorRepository;
+    private ColorService colorService;
     @Autowired
-    private HandStyleRepository handStyleRepository;
+    private HandStyleService handStyleService;
     @Autowired
-    private MaterialRepository materialRepository;
+    private MaterialSerivce materialSerivce;
     @Autowired
-    private ProductRepository productRepository;
+    private ProductService productService;
     @Autowired
-    private SizeRepository sizeRepository;
-
-    @ModelAttribute("brands")
-    public List<Brand> brandList() {
-        return brandRepository.findAll();
-    }
-
-    @ModelAttribute("products")
-    public List<Product> productList() {
-        return productRepository.findAll();
-    }
-
-    @ModelAttribute("collarTypes")
-    public List<CollarStyle> collarTypeList() {
-        return collarStyleRepository.findAll();
-    }
-
-    @ModelAttribute("handStyles")
-    public List<HandStyle> handStyleList() {
-        return handStyleRepository.findAll();
-    }
-
-    @ModelAttribute("colors")
-    public List<Color> colorList() {
-        return colorRepository.findAll();
-    }
-
-    @ModelAttribute("sizes")
-    public List<Size> sizeList() {
-        return sizeRepository.findAll();
-    }
-
-    @ModelAttribute("materials")
-    public List<Material> materialList() {
-        return materialRepository.findAll();
-    }
+    private SizeService sizeService;
 
     @GetMapping("hien-thi")
     public String hienthi(Model model, @RequestParam(defaultValue = "1") int page) {
         int pageSize = 5;
         Pageable pageable = PageRequest.of(page - 1, pageSize);
-        Page<ProductDetail> productDetails = productDetailRepository.findAll(pageable);
+        Page<ProductDetail> productDetails = productDetailService.getAllPage(pageable);
 
         model.addAttribute("productDetails", productDetails);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", productDetails.getTotalPages());
-        return "admin/product/index";
+        return "admin/product_detail/product_detail";
     }
 
     @GetMapping("view-add")
     public String viewadd(Model model) {
+        ProductDetail productDetail = new ProductDetail();
+        model.addAttribute("productDetail",productDetail);
 
-        return "admin/product/add-product";
+        List<Brand> brands = brandService.getAll();
+        model.addAttribute("brands", brands);
+        List<CollarStyle> collarStyles = collarStyleService.getAll();
+        model.addAttribute("collarTypes", collarStyles);
+        List<Color> colors = colorService.getAll();
+        model.addAttribute("colors", colors);
+        List<HandStyle> handStyles = handStyleService.getAll();
+        model.addAttribute("handStyles", handStyles);
+        List<Material> materials = materialSerivce.getAll();
+        model.addAttribute("materials", materials);
+        List<Product> products = productService.getAll();
+        model.addAttribute("products", products);
+        List<Size> sizes = sizeService.getAll();
+        model.addAttribute("sizes", sizes);
+
+        return "admin/product_detail/add-product";
+    }
+
+    @PostMapping("add")
+    public String add(
+            Model model ,
+            @ModelAttribute("productDetail") ProductDetail productDetail
+    ) {
+        this.productDetailService.add(productDetail);
+        return "redirect:/admin/product-details/add";
     }
 
 }
