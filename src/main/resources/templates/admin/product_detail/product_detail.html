@@ -54,8 +54,7 @@
                             <td th:text="${productDetail.material.name}"></td>
                             <td th:text="${productDetail.description}"></td>
                             <td>
-                                <a href="#" class="btn bg-secondary" onclick="toggleForm('edit')">Edit</a>
-
+                                <a th:href="@{/admin/product-details/view-update/{id}(id=${productDetail.id})}" class="btn bg-secondary">Edit</a>
                             </td>
                         </tr>
                         </tbody>

@@ -17,7 +17,8 @@ import java.util.UUID;
 @Table(name = "product_detail")
 public class ProductDetail {
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id" , nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -33,19 +34,19 @@ public class ProductDetail {
     private CollarStyle collarStyle;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hand_style_id")
+    @JoinColumn(name = "hand_style_id" , referencedColumnName = "id")
     private HandStyle handStyle;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "color_id")
+    @JoinColumn(name = "color_id" , referencedColumnName = "id")
     private Color color;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "size_id")
+    @JoinColumn(name = "size_id" , referencedColumnName = "id")
     private Size size;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "material_id")
+    @JoinColumn(name = "material_id" , referencedColumnName = "id")
     private Material material;
 
     @Column(name = "quantity")
