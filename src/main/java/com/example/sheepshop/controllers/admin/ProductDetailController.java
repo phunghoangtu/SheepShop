@@ -2,7 +2,6 @@ package com.example.sheepshop.controllers.admin;
 
 
 import com.example.sheepshop.entitys.*;
-import com.example.sheepshop.repositorys.*;
 import com.example.sheepshop.services.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -73,7 +72,7 @@ public class ProductDetailController {
         products.add(0,product);
 
 
-        return "admin/product_detail/add-product";
+        return "add-productdetail";
     }
 
     @PostMapping("add")
@@ -133,7 +132,7 @@ public class ProductDetailController {
 
 
 
-        return "admin/product_detail/update-product";
+        return "update-productdetail";
     }
 
     @PostMapping("update")

@@ -19,6 +19,7 @@ import java.util.UUID;
 public class Product {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @Column(name = "code", length = 30)
@@ -30,6 +31,10 @@ public class Product {
 
     @Column(name = "status")
     private Integer status;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id" , referencedColumnName = "id")
+    private Category category;
 
     @OneToMany(mappedBy = "product")
     private Set<ProductDetail> productDetails;

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -18,6 +19,7 @@ import java.util.UUID;
 public class Category {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @Column(name = "name", length = 50)
@@ -30,5 +32,8 @@ public class Category {
 
     @Column(name = "status")
     private Integer status;
+
+    @OneToMany(mappedBy = "category")
+    private Set<Product> products;
 
 }
