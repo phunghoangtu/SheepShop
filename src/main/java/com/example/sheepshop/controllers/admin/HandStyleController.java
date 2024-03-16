@@ -9,8 +9,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/admin/hand-style/")
@@ -28,6 +31,20 @@ public class HandStyleController {
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", handStyles.getTotalPages());
         return "admin/handstyle/handstyle";
+    }
+
+    @GetMapping("view-add")
+    public String viewadd(Model model) {
+        HandStyle handStyle = new HandStyle();
+        model.addAttribute("handStyle", handStyle);
+        return "admin/handstyle/add-handstyle";
+    }
+
+    @GetMapping("view-update/{id}")
+    public String viewupdate(@PathVariable("id") UUID id, Model model) {
+        HandStyle handStyle  = handStyleService.detail(id);
+        model.addAttribute("handStyle", handStyle);
+        return "admin/handstyle/update-handstyle";
     }
 
 }

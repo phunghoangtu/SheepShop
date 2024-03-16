@@ -9,8 +9,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/admin/brand/")
@@ -28,6 +32,20 @@ public class BrandController {
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", brands.getTotalPages());
         return "admin/brand/brand";
+    }
+
+    @GetMapping("view-add")
+    public String viewadd(Model model) {
+        Brand brand = new Brand();
+        model.addAttribute("brand", brand);
+        return "admin/brand/add-brand";
+    }
+
+    @GetMapping("view-update/{id}")
+    public String viewupdate(@PathVariable("id") UUID id, Model model) {
+        Brand brand  = brandService.detail(id);
+        model.addAttribute("brand", brand);
+        return "admin/brand/update-brand";
     }
 
 }

@@ -9,8 +9,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/admin/material/")
@@ -28,6 +31,20 @@ public class MaterialController {
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", materials.getTotalPages());
         return "admin/material/material";
+    }
+
+    @GetMapping("view-add")
+    public String viewadd(Model model) {
+        Material material = new Material();
+        model.addAttribute("material", material);
+        return "admin/material/add-material";
+    }
+
+    @GetMapping("view-update/{id}")
+    public String viewupdate(@PathVariable("id") UUID id, Model model) {
+        Material material  = materialSerivce.detail(id);
+        model.addAttribute("material", material);
+        return "admin/material/update-material";
     }
 
 }
