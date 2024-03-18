@@ -17,6 +17,7 @@ import java.util.UUID;
 public class Cart {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -18,6 +18,7 @@ import java.util.UUID;
 public class Material {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @Column(name = "name", length = 50)

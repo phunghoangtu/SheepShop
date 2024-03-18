@@ -17,6 +17,7 @@ import java.util.UUID;
 public class Customer {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @Column(name = "code", length = 30)
