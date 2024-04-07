@@ -1,7 +1,9 @@
 package com.example.sheepshop.entitys;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
@@ -11,11 +13,13 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "role")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id" , nullable = false)
     private Integer id;
 
     @Nationalized
@@ -25,7 +29,7 @@ public class Role {
     @Column(name = "status")
     private Integer status;
 
-    @OneToMany(mappedBy = "role")
+    @OneToMany(mappedBy = "role" , fetch = FetchType.EAGER)
     private Set<UserRole> userRoles = new LinkedHashSet<>();
 
 }

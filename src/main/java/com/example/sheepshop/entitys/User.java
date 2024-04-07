@@ -1,7 +1,9 @@
 package com.example.sheepshop.entitys;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
@@ -10,6 +12,8 @@ import java.util.Set;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "users")
 public class User {
@@ -28,7 +32,7 @@ public class User {
     @Column(name = "username", length = 50)
     private String username;
 
-    @Column(name = "password", length = 70)
+    @Column(name = "password", length = 256)
     private String password;
 
     @Lob
@@ -50,7 +54,7 @@ public class User {
     @Column(name = "status")
     private Integer status;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user" , fetch = FetchType.EAGER)
     private Set<UserRole> userRoles = new LinkedHashSet<>();
 
 }
