@@ -1,53 +1,116 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!-- Mirrored from portotheme.com/html/molla/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 19 Jan 2024 02:54:34 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SheepShop</title>
-    <!-- Plugins CSS File -->
-    <link rel="stylesheet" th:href="@{/templates/fe_home/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/templates/fe_home/css/plugins/owl-carousel/owl.carousel.css}">
-    <link rel="stylesheet" th:href="@{/templates/fe_home/css/plugins/magnific-popup/magnific-popup.css}">
-    <link rel="stylesheet" th:href="@{/templates/fe_home/css/plugins/jquery.countdown.css}">
-    <!-- Main CSS File -->
-    <link rel="stylesheet" th:href="@{/templates/fe_home/css/style.css}">
-    <link rel="stylesheet" th:href="@{/templates/fe_home/css/skins/skin-demo-4.css}">
-    <link rel="stylesheet" th:href="@{/templates/fe_home/css/demos/demo-4.css}">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Admin</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- ajax/libs/angularjs/1.6.9/angular.min.js -->
+  <script src="assets/js/angular.min.js"></script>
 </head>
+
 <body>
-    <div class="form-box">
-        <div class="form-tab">
-            <ul class="nav nav-pills nav-fill" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link">Sign In</a>
-                </li>
-            </ul>
-            <form th:action="@{/logon}"
-                    method="post">
-                <div class="form-group">
-                    <label for="singin-email-2">Username</label>
-                    <input type="text" class="form-control" id="singin-email-2" name="username" required>
-                </div><!-- End .form-group -->
-                <div class="form-group">
-                    <label for="singin-password-2">Password</label>
-                    <input type="password" class="form-control" id="singin-password-2" name="password" required>
-                </div><!-- End .form-group -->
-                <div class="form-footer">
-                    <button type="submit" class="btn btn-outline-primary-2">
-                        <span>LOG IN</span>
-                        <i class="icon-long-arrow-right"></i>
-                    </button>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="signin-remember-2">
-                        <label class="custom-control-label" for="signin-remember-2">Remember Me</label>
-                    </div><!-- End .custom-checkbox -->
-                    <a href="#" class="forgot-link">Forgot Your Password?</a>
-                </div><!-- End .form-footer -->
-            </form>
-        </div><!-- End .form-tab -->
-    </div><!-- End .form-box -->
+  <main>
+    <div class="container">
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="d-flex justify-content-center py-4">
+                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                  <img src="assets/img/logo.png" alt="">
+                  <span class="d-none d-lg-block">SheepShop</span>
+                </a>
+              </div><!-- End Logo -->
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Login</h5>
+                  </div>
+
+                  <form action="#" method="post" enctype="multipart/form-data"
+                      class="row g-3 needs-validation">
+
+                    <div class="col-12">
+                      <label for="yourUsername" class="form-label">Username</label>
+                      <div class="input-group has-validation">                
+                        <input type="text" name="username" class="form-control" id="yourUsername" required>
+                        <div class="invalid-feedback">Please enter your username.</div>
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourPassword" class="form-label">Password</label>
+                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <div class="invalid-feedback">Please enter your password!</div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <button class="btn btn-primary w-100" type="submit">Quản lý</button>                     
+                    </div>
+                    <div class="col-6">
+                      <button class="btn btn-info w-100" type="submit">Bán hàng</button>
+                    </div>
+                    <div class="col-12">
+                      <p class="small mb-0"><a href="#">Quên mật khẩu?</a></p>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main><!-- End #main -->
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
 </body>
+
 </html>

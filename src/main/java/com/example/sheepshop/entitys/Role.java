@@ -1,25 +1,24 @@
 package com.example.sheepshop.entitys;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Nationalized;
+
+import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.UUID;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "role")
 public class Role {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Integer id;
 
+    @Nationalized
     @Column(name = "name", length = 30)
     private String name;
 
@@ -27,6 +26,6 @@ public class Role {
     private Integer status;
 
     @OneToMany(mappedBy = "role")
-    private Set<UserRole> userRoles ;
+    private Set<UserRole> userRoles = new LinkedHashSet<>();
 
 }

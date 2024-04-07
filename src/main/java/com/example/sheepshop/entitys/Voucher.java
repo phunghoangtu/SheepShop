@@ -1,30 +1,27 @@
 package com.example.sheepshop.entitys;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Nationalized;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Set;
-import java.util.UUID;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "voucher")
 public class Voucher {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Integer id;
 
     @Column(name = "code", length = 30)
     private String code;
 
+    @Nationalized
     @Column(name = "name", length = 100)
     private String name;
 
@@ -45,8 +42,5 @@ public class Voucher {
 
     @Column(name = "status")
     private Integer status;
-
-    @OneToMany(mappedBy = "voucher")
-    private Set<Bill> bills ;
 
 }

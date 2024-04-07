@@ -1,27 +1,21 @@
 package com.example.sheepshop.entitys;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
-import java.util.Set;
-import java.util.UUID;
-
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "category")
 public class Category {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Integer id;
 
+    @Nationalized
     @Column(name = "name", length = 50)
     private String name;
 
@@ -32,8 +26,5 @@ public class Category {
 
     @Column(name = "status")
     private Integer status;
-
-    @OneToMany(mappedBy = "category")
-    private Set<Product> products;
 
 }

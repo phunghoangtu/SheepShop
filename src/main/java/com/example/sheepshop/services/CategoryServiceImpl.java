@@ -3,7 +3,6 @@ package com.example.sheepshop.services;
 
 
 import com.example.sheepshop.entitys.Category;
-import com.example.sheepshop.repositorys.BrandRepository;
 import com.example.sheepshop.repositorys.CategoryRepository;
 import com.example.sheepshop.services.impl.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,35 +1,31 @@
 package com.example.sheepshop.entitys;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.UUID;
+import org.hibernate.annotations.Nationalized;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "customer")
 public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Integer id;
 
     @Column(name = "code", length = 30)
     private String code;
 
+    @Nationalized
     @Column(name = "fullname", length = 100)
     private String fullname;
 
     @Column(name = "username", length = 50)
     private String username;
 
-    @Column(name = "password", length = 256)
+    @Column(name = "password", length = 70)
     private String password;
 
     @Lob

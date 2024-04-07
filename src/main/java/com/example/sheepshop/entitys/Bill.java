@@ -1,26 +1,21 @@
 package com.example.sheepshop.entitys;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.Set;
-import java.util.UUID;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "bill")
 public class Bill {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Integer id;
 
     @Column(name = "code", length = 30)
     private String code;
@@ -54,11 +49,5 @@ public class Bill {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     private Customer customer;
-
-    @OneToMany(mappedBy = "bill")
-    private Set<BillDetail> billDetails;
-
-    @OneToMany(mappedBy = "cart")
-    private Set<CartDetail> cartDetails ;
 
 }
