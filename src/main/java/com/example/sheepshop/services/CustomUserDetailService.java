@@ -3,7 +3,6 @@ package com.example.sheepshop.services;
 import com.example.sheepshop.config.CustomUserDetails;
 import com.example.sheepshop.entitys.User;
 import com.example.sheepshop.entitys.UserRole;
-import com.example.sheepshop.services.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
