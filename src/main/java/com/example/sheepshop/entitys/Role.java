@@ -12,24 +12,24 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 @Table(name = "role")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id" , nullable = false)
-    private Integer id;
+    @Column(name = "id" )
+    private Long id;
 
     @Nationalized
-    @Column(name = "name", length = 30)
+    @Column(name = "name")
     private String name;
 
     @Column(name = "status")
     private Integer status;
 
     @OneToMany(mappedBy = "role" , fetch = FetchType.EAGER)
-    private Set<UserRole> userRoles = new LinkedHashSet<>();
+    private Set<UserRole> userRoles;
 
 }

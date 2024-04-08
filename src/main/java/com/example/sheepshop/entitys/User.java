@@ -19,20 +19,20 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name = "code", length = 30)
+    @Column(name = "code")
     private String code;
 
     @Nationalized
-    @Column(name = "fullname", length = 100)
+    @Column(name = "fullname")
     private String fullname;
 
-    @Column(name = "username", length = 50)
+    @Column(name = "username")
     private String username;
 
-    @Column(name = "password", length = 256)
+    @Column(name = "password")
     private String password;
 
     @Lob
@@ -42,10 +42,10 @@ public class User {
     @Column(name = "gender")
     private Long gender;
 
-    @Column(name = "phone", length = 20)
+    @Column(name = "phone")
     private String phone;
 
-    @Column(name = "email", length = 100)
+    @Column(name = "email")
     private String email;
 
     @Column(name = "enabled")
@@ -55,6 +55,6 @@ public class User {
     private Integer status;
 
     @OneToMany(mappedBy = "user" , fetch = FetchType.EAGER)
-    private Set<UserRole> userRoles = new LinkedHashSet<>();
+    private Set<UserRole> userRoles;
 
 }
