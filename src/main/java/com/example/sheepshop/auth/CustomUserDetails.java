@@ -6,12 +6,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
-public class CustomUserDetails  implements UserDetails {
+public class CustomUserDetails implements UserDetails {
 
-    private User user ;
+    private User user;
     private Collection<? extends GrantedAuthority> authorities;
 
+    public CustomUserDetails() {
+
+    }
+
     public CustomUserDetails(User user, Collection<? extends GrantedAuthority> authorities) {
+        super();
         this.user = user;
         this.authorities = authorities;
     }

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -16,16 +18,15 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
 
     @Column(name = "code")
     private String code;
 
-    @Nationalized
     @Column(name = "fullname")
     private String fullname;
 
@@ -40,7 +41,7 @@ public class User {
     private String image;
 
     @Column(name = "gender")
-    private Long gender;
+    private Integer gender;
 
     @Column(name = "phone")
     private String phone;
@@ -55,6 +56,6 @@ public class User {
     private Integer status;
 
     @OneToMany(mappedBy = "user" , fetch = FetchType.EAGER)
-    private Set<UserRole> userRoles;
+    private Set<UserRole> userRoles  = new HashSet<>();;
 
 }

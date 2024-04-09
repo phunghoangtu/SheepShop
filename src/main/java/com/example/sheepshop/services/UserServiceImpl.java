@@ -1,5 +1,7 @@
 package com.example.sheepshop.services;
 
+
+
 import com.example.sheepshop.entitys.User;
 import com.example.sheepshop.repositorys.UserRepository;
 import com.example.sheepshop.services.impl.UserService;
@@ -9,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -18,6 +20,12 @@ public class UserServiceImpl implements UserService{
     public List<User> getAll() {
         return userRepository.findAll();
     }
+
+    @Override
+    public void save(User user) {
+        userRepository.save(user);
+    }
+
 
     @Override
     public User findByUsername(String username) {

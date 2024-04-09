@@ -25,16 +25,14 @@ public class CustomUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.findByUsername(username);
         if (user == null) {
-            throw new UsernameNotFoundException(username + "sai");
+            throw new UsernameNotFoundException("Sai" + username);
         }
-        Collection<GrantedAuthority> grantedAuthoritySet = new HashSet<>();
         Set<UserRole> roles = user.getUserRoles();
+        Collection<GrantedAuthority> authorities = new HashSet<>();
         for (UserRole userRole : roles) {
-            grantedAuthoritySet.add(new SimpleGrantedAuthority(userRole.getRole().getName()));
+            authorities.add(new SimpleGrantedAuthority(userRole.getRole().getName()));
         }
-
-        return new CustomUserDetails(user , grantedAuthoritySet);
+        return new CustomUserDetails(user, authorities);
     }
-
 
 }

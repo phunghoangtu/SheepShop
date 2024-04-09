@@ -9,12 +9,12 @@ CREATE TABLE category (
                           description NVARCHAR(max) ,
                           status	INT DEFAULT 0,
 )
-GO
+    GO
 CREATE TABLE image (
                        id INT IDENTITY(1,1) PRIMARY KEY,
                        code VARCHAR(255) ,
 )
-GO
+    GO
 
 CREATE TABLE brand (
                        id INT IDENTITY(1,1) PRIMARY KEY,
@@ -22,35 +22,35 @@ CREATE TABLE brand (
                        description NVARCHAR(max) ,
                        status	INT DEFAULT 0,
 )
-GO
+    GO
 CREATE TABLE collar_style (
                               id INT IDENTITY(1,1) PRIMARY KEY,
                               name NVARCHAR(50),
                               description NVARCHAR(max) ,
                               status	INT DEFAULT 0,
 )
-GO
+    GO
 CREATE TABLE color (
                        id INT IDENTITY(1,1) PRIMARY KEY,
                        name NVARCHAR(50),
                        description NVARCHAR(max) ,
                        status	INT DEFAULT 0,
 )
-GO
+    GO
 CREATE TABLE size (
                       id INT IDENTITY(1,1) PRIMARY KEY,
                       name NVARCHAR(50),
                       description NVARCHAR(max) ,
                       status	INT DEFAULT 0,
 )
-GO
+    GO
 CREATE TABLE material (
                           id INT IDENTITY(1,1) PRIMARY KEY,
                           name NVARCHAR(50),
                           description NVARCHAR(max) ,
                           status	INT DEFAULT 0,
 )
-GO
+    GO
 CREATE TABLE product (
                          id INT IDENTITY(1,1) PRIMARY KEY,
                          brand_id INT REFERENCES brand(id),
@@ -68,7 +68,7 @@ CREATE TABLE product (
                          status	INT DEFAULT 0,
 
 )
-GO
+    GO
 CREATE TABLE customer (
                           id INT IDENTITY(1,1) PRIMARY KEY,
                           code VARCHAR(30) UNIQUE,
@@ -81,13 +81,13 @@ CREATE TABLE customer (
                           email VARCHAR(100),
                           status	INT DEFAULT 0,
 )
-GO
+    GO
 CREATE TABLE users (
                        id INT IDENTITY(1,1) PRIMARY KEY,
                        code VARCHAR(30) UNIQUE,
                        fullname NVARCHAR(100),
                        username VARCHAR(50) UNIQUE,
-                       password VARCHAR(70),
+                       password VARCHAR(256),
                        image VARCHAR(max),
                        gender BIGINT,
                        phone VARCHAR(20),
@@ -95,19 +95,18 @@ CREATE TABLE users (
                        enabled BIT,
                        status	INT DEFAULT 0,
 )
-GO
+    GO
 CREATE TABLE role (
                       id INT IDENTITY(1,1) PRIMARY KEY,
-                      name NVARCHAR(30),
-                      status	INT DEFAULT 0,
+                      name NVARCHAR(15),
 )
-GO
+    GO
 CREATE TABLE user_role (
-                             id INT IDENTITY(1,1) PRIMARY KEY,
-                             user_id INT REFERENCES users(id),
-                             role_id INT REFERENCES role(id),
+                           id INT IDENTITY(1,1) PRIMARY KEY,
+                           user_id INT REFERENCES users(id),
+                           role_id INT REFERENCES role(id),
 )
-GO
+    GO
 CREATE TABLE voucher (
                          id INT IDENTITY(1,1) PRIMARY KEY,
                          code VARCHAR(30) UNIQUE,
@@ -119,7 +118,7 @@ CREATE TABLE voucher (
                          end_date DATE ,
                          status	INT DEFAULT 0,
 )
-GO
+    GO
 
 CREATE TABLE bill (
                       id INT IDENTITY(1,1) PRIMARY KEY,
@@ -134,7 +133,7 @@ CREATE TABLE bill (
                       voucher_id INT REFERENCES voucher(id),
                       customer_id INT REFERENCES customer(id),
 )
-GO
+    GO
 CREATE TABLE bill_detail (
                              id INT IDENTITY(1,1) PRIMARY KEY,
                              bill_id INT REFERENCES bill(id),
@@ -142,12 +141,12 @@ CREATE TABLE bill_detail (
                              quantity INT ,
                              price MONEY ,
 )
-GO
+    GO
 CREATE TABLE cart (
                       id INT IDENTITY(1,1) PRIMARY KEY,
                       customer_id INT REFERENCES customer(id),
 )
-GO
+    GO
 CREATE TABLE cart_detail (
                              id INT IDENTITY(1,1) PRIMARY KEY,
                              cart_id INT REFERENCES bill(id),
@@ -155,7 +154,7 @@ CREATE TABLE cart_detail (
                              quantity INT ,
                              price MONEY ,
 )
-GO
+    GO
 
 -- Thêm dữ liệu vào bảng "category"
 INSERT INTO category (name, description, status)
@@ -259,22 +258,20 @@ VALUES
     ('C004', 'Emily Davis', 'image4.jpg', 2, '321654987', 'emilydavis@example.com', 0),
     ('C005', 'David Wilson', 'image5.jpg', 1, '789123456', 'davidwilson@example.com', 0);
 
--- Sau đó, thêm dữ liệu vào bảng "users" với mật khẩu đã được mã hóa bằng bcrypt
+-- Thêm dữ liệu vào bảng "users"
 INSERT INTO users (code, fullname, username, image, gender, phone, email, enabled, status)
 VALUES
-    ('U001', 'John Doe', 'admin', 'image1.jpg', 1, '123456789', 'johndoe@example.com', 1, 0),
-    ('U002', 'Jane Smith', 'sa', 'image2.jpg', 2, '987654321', 'janesmith@example.com', 1, 0);
+    ('U001', 'John Doe', 'Admin', 'image1.jpg', 1, '123456789', 'johndoe@example.com', 1, 0);
 
 -- Thêm dữ liệu vào bảng "role"
-INSERT INTO role (name, status)
+INSERT INTO role (name)
 VALUES
-    ('ADMIN', 0);
+    ('ADMIN');
 
 -- Thêm dữ liệu vào bảng "authorities"
 INSERT INTO user_role(user_id, role_id)
 VALUES
-    (1, 1),
-    (2, 1);
+    (1, 1);
 
 -- Thêm dữ liệu vào bảng "voucher"
 INSERT INTO voucher (code, name, type_voucher, discount, Cash, start_date, end_date, status)
@@ -288,35 +285,10 @@ VALUES
 -- Thêm dữ liệu vào bảng "bill"
 INSERT INTO bill (code, payment_date, total_price, total_price_last, pay_type, pay_status, code_ghn, user_id, voucher_id, customer_id)
 VALUES
-    ('B001', GETDATE() , 500.00, GETDATE() , 1, 1 , 'GHNCODE001' , 1, 1, 1),
-    ('B002', GETDATE() , 750.00, GETDATE() , 2, 0 , 'GHNCODE002' , 1, 2, 2),
-    ('B003', GETDATE() , 1000.00, GETDATE() , 1, 1 , 'GHNCODE003' , 1, 3, 3),
-    ('B004', GETDATE() , 850.00, GETDATE() , 2, 0 , 'GHNCODE004' , 1, 4, 4),
-    ('B005', GETDATE() , 1200.00, GETDATE() , 1, 1 , 'GHNCODE005' , 1, 5, 5);
+    ('B001', GETDATE() , 500.00, GETDATE() , 1, 1 , 'GHNCODE001' , 1, 1, 1);
 
 -- Thêm dữ liệu vào bảng "bill_detail"
 INSERT INTO bill_detail (bill_id, product_id, quantity, price)
 VALUES
-    (1, 1, 2, 50.00),
-    (1, 2, 1, 100.00),
-    (2, 3, 3, 75.00),
-    (2, 4, 2, 150.00),
-    (3, 5, 1, 200.00);
+    (1, 1, 2, 50.00);
 
--- Thêm dữ liệu vào bảng "cart"
-INSERT INTO cart (customer_id)
-VALUES
-    (1),
-    (2),
-    (3),
-    (4),
-    (5);
-
--- Thêm dữ liệu vào bảng "cart_detail"
-INSERT INTO cart_detail (cart_id, product_id, quantity, price)
-VALUES
-    (1, 1, 2, 50.00),
-    (1, 2, 1, 100.00),
-    (2, 3, 3, 75.00),
-    (2, 4, 2, 150.00),
-    (3, 5, 1, 200.00);
