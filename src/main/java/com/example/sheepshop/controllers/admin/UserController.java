@@ -1,6 +1,5 @@
 package com.example.sheepshop.controllers.admin;
 
-import com.example.sheepshop.entitys.Role;
 import com.example.sheepshop.entitys.User;
 import com.example.sheepshop.entitys.UserRole;
 import com.example.sheepshop.services.impl.RoleService;
@@ -9,7 +8,6 @@ import com.example.sheepshop.services.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
