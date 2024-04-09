@@ -26,9 +26,9 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests((auth) -> auth.requestMatchers("/*").permitAll().requestMatchers("/test")
-                        .permitAll().requestMatchers("/admin/**").hasAuthority("ADMIN").anyRequest().authenticated())
+        http.csrf(csrf -> csrf.disable()).authorizeHttpRequests((auth) -> auth
+                        .requestMatchers("/*").permitAll()
+                        .requestMatchers("/admin/**").hasAuthority("ADMIN").anyRequest().authenticated())
                 .formLogin(login -> login.loginPage("/logon")
                         .loginProcessingUrl("/logon")
                         .usernameParameter("username")
@@ -37,7 +37,6 @@ public class SecurityConfig {
                 .rememberMe(rememberMe -> rememberMe.tokenRepository(persistentTokenRepository()))
                 .logout(logout -> logout.logoutUrl("/admin-logout").logoutSuccessUrl("/logon"))
                 .logout(logout -> logout.logoutUrl("/admin-logout").logoutSuccessUrl("/logon"));
-
         return http.build();
     }
 

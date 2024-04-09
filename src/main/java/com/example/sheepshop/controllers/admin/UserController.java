@@ -32,7 +32,7 @@ public class UserController {
         return "admin/logon";
     }
 
-    @GetMapping("/test")
+    @GetMapping("/demo")
     public String test() {
         User u = new User();
         u.setCode("Demo");
@@ -55,6 +55,11 @@ public class UserController {
         userRoleService.save(ur);
 
         return "redirect:/logon";
+    }
+
+    @GetMapping("/404")
+    public String error404() {
+        return "admin/404";
     }
 
 

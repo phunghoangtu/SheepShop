@@ -4,20 +4,20 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link " href="index.html">
+            <a class="nav-link collapsed" th:href="@{/admin/chart}">
                 <i class="bi bi-bar-chart"></i>
                 <span>Thống kê</span>
             </a>
         </li><!-- End chart Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#">
+            <a class="nav-link collapsed" th:href="@{/admin/category}">
                 <i class="bi bi-menu-button-wide"></i><span>Danh mục</span>
             </a>
         </li><!-- End category Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#product-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link collapsed" data-bs-target="#product-nav" data-bs-toggle="collapse" href="product">
                 <i class="bi bi-menu-button-wide"></i><span>Sản phẩm</span><i
                     class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -28,26 +28,26 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="list-item-product">
                         <i class="bi bi-circle"></i><span>Thuộc tính sản phẩm</span>
                     </a>
                 </li>
             </ul>
         </li><!-- End product Nav -->
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#">
+            <a class="nav-link collapsed" data-bs-toggle="collapse" href="">
                 <i class="bi bi-menu-button-wide"></i><span>Khuyến mãi</span>
             </a>
         </li><!-- End sale Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#">
+            <a class="nav-link collapsed" href="#">
                 <i class="bi bi-person"></i><span>Nhân viên</span>
             </a>
         </li><!-- End employee Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#">
+            <a class="nav-link collapsed" th:href="@{/admin/customer}">
                 <i class="bi bi-people"></i><span>Khách hàng</span>
             </a>
         </li><!-- End customer Nav -->
