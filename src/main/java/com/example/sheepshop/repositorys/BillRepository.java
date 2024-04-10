@@ -1,4 +1,11 @@
 package com.example.sheepshop.repositorys;
 
-public interface BillRepository {
+import com.example.sheepshop.entitys.Bill;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface BillRepository extends JpaRepository<Bill, Integer>{
+
+
 }
