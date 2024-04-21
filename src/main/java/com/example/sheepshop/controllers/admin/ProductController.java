@@ -61,7 +61,13 @@ public class ProductController {
         return "admin/product/product";
     }
 
-    @PostMapping("update")
+    @GetMapping("hien-thi/{id}")
+    public String viewUpdate(@PathVariable("id") String id, Model model) {
+            Product product = productService.findById(Long.valueOf(id));
+            model.addAttribute("product", product);
+            return "admin/product/product";
+    }
+
     public String viewUpdate(
             Model model,
             @ModelAttribute("product") Product product,
@@ -78,8 +84,6 @@ public class ProductController {
             @RequestParam("category") Category categoryId,
             @RequestParam("image") String imageId
     ) {
-
-
         return "redirect:/admin/product/hien-thi";
     }
 

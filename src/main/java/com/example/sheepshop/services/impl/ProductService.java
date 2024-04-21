@@ -10,7 +10,7 @@ public interface ProductService {
 
     void save(Product product);
 
-    Product findById(Integer id);
+    Product findById(Long id);
 
     Product findByName(String name);
 

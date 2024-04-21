@@ -30,8 +30,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product findById(Integer id) {
-        return productRepository.findById(id).get();
+    public Product findById(Long id) {
+        return productRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getAllAPI() {
-        return productRepository.getAllAPI();
+        return productRepository.findAll();
     }
 
 
