@@ -15,10 +15,7 @@ public class ProductRest {
     @Autowired
     private ProductService productService;
 
-    @GetMapping
-    public ResponseEntity<?> getAll(){
-        return ResponseEntity.ok(productService.getAllAPI());
-    }
+
 
 
 }

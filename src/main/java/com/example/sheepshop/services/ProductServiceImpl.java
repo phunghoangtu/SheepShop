@@ -5,8 +5,10 @@ import com.example.sheepshop.repositorys.ProductRepository;
 import com.example.sheepshop.services.impl.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.cache.annotation.Cacheable;
 
+
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.List;
 
 @Service
@@ -18,7 +20,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getAll() {
-        return productRepository.findAll();
+       return productRepository.findAll();
+
     }
 
     @Override

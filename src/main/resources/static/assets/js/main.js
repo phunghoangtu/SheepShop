@@ -316,6 +316,26 @@
           select: 4,
           cellClass: "green",
           headerClass: "red"
+        },
+        {
+          select: 5,
+          sortSequence: ["desc"]
+        },
+        {
+          select: 6,
+          sortSequence: ["desc"]
+        },
+        {
+          select: 7,
+          sortSequence: ["desc"]
+        },
+        {
+          select: 8,
+          sortSequence: ["desc"]
+        },
+        {
+          select: 9,
+          sortSequence: ["desc"]
         }
       ]
     });
@@ -336,3 +356,5 @@
   }
 
 })();
+
+

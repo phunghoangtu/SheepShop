@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin/chart")
+@RequestMapping("/admin/chart/")
 public class ChartController {
 
-    @GetMapping
+    @GetMapping("hien-thi")
     public String chart() {
         return "admin/chart/chart";
     }
