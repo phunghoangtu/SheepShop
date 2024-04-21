@@ -34,7 +34,5 @@ public class CollarStyle {
     @Column(name = "status")
     private Integer status;
 
-    @OneToMany(mappedBy = "collarStyle")
-    private Set<Product> products = new LinkedHashSet<>();
 
 }

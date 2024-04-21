@@ -39,9 +39,10 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findByName(name);
     }
 
+    
     @Override
     public List<Product> getAllAPI() {
-        return productRepository.findAll();
+        return productRepository.getAllAPI();
     }
 
 

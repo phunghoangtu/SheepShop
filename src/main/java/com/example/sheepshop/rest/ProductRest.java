@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
-@CrossOrigin(origins = {"http://localhost:8080" , "http://127.0.0.1:8080"})
 @RestController
 @RequestMapping("/api/product")
 public class ProductRest {
@@ -18,7 +16,7 @@ public class ProductRest {
 
     @GetMapping
     public ResponseEntity<?> getAll() {
-        return ResponseEntity.ok(productService.getAll());
+        return ResponseEntity.ok(productService.getAllAPI());
     }
 
     @GetMapping("/{id}")

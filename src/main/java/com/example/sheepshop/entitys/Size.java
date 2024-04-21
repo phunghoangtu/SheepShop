@@ -33,7 +33,6 @@ public class Size {
     @Column(name = "status")
     private Integer status;
 
-    @OneToMany(mappedBy = "size")
-    private Set<Product> products = new LinkedHashSet<>();
+
 
 }

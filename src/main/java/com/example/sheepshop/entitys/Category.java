@@ -34,7 +34,6 @@ public class Category {
     @Column(name = "status")
     private Integer status;
 
-    @OneToMany(mappedBy = "category")
-    private Set<Product> products = new LinkedHashSet<>();
+
 
 }

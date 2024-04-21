@@ -34,7 +34,6 @@ public class Material {
     @Column(name = "status")
     private Integer status;
 
-    @OneToMany(mappedBy = "material")
-    private Set<Product> products = new LinkedHashSet<>();
+
 
 }

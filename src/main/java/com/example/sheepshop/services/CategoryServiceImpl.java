@@ -29,4 +29,10 @@ public class CategoryServiceImpl implements CategoryService {
         categoryRepository.save(category);
     }
 
+    @Override
+    public List<Category> getAllAPI() {
+        return categoryRepository.getAllAPI();
+    }
+
+
 }

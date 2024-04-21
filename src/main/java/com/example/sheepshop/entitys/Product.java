@@ -19,34 +19,6 @@ public class Product {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "brand_id")
-    private Brand brand;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "collar_style_id")
-    private CollarStyle collarStyle;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "color_id")
-    private Color color;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "size_id")
-    private com.example.sheepshop.entitys.Size size;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "material_id")
-    private Material material;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Category category;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "image_id")
-    private Image image;
-
     @Size(max = 30)
     @Column(name = "code", length = 30)
     private String code;
@@ -70,5 +42,33 @@ public class Product {
     @ColumnDefault("0")
     @Column(name = "status")
     private Integer status;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "collar_style_id")
+    private CollarStyle collarStyle;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "color_id")
+    private Color color;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "size_id")
+    private com.example.sheepshop.entitys.Size size;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "material_id")
+    private Material material;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "image_id")
+    private Image image;
 
 }

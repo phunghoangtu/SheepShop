@@ -22,7 +22,6 @@ public class Image {
     @Column(name = "code")
     private String code;
 
-    @OneToMany(mappedBy = "image")
-    private Set<Product> products = new LinkedHashSet<>();
+
 
 }
